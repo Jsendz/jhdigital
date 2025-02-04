@@ -16,23 +16,30 @@ type Props = {
 
 // Dynamic SEO Metadata
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = params;
+  if (!params?.locale) {
+    return {
+      title: "Default Title",
+      description: "Default description",
+    };
+  }
+
+  const locale: string = params.locale; // ✅ Ensure locale is a string
   const t = await getTranslations({ locale, namespace: "Index" });
 
   return {
     title: t("title"), // Localized Page Title
     description: t("description"), // Localized Meta Description
     alternates: {
-      canonical: `https://yourwebsite.com/${locale}`,
+      canonical: `https://jhdigitalservices.com/${locale}`,
     },
     openGraph: {
       title: t("title"),
       description: t("description"),
-      url: `https://yourwebsite.com/${locale}`,
+      url: `https://jhdigitalservices.com/${locale}`,
       siteName: "My Website",
       images: [
         {
-          url: `https://yourwebsite.com/assets/${locale}/og-image.jpg`,
+          url: `https://jhdigitalservices.com/assets/${locale}/og-image.jpg`,
           width: 1200,
           height: 630,
           alt: t("ogImageAlt"),
@@ -44,7 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: t("title"),
       description: t("description"),
-      images: [`https://yourwebsite.com/assets/${locale}/twitter-image.jpg`],
+      images: [`https://jhdigitalservices.com/assets/${locale}/twitter-image.jpg`],
     },
   };
 }
