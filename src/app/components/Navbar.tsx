@@ -1,61 +1,46 @@
+// app/components/Navbar.tsx
+import Link from "next/link";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
-
-import Image from "next/image"
-import NavigationLink from './NavigationLink';
-import {useTranslations} from 'next-intl';
-
-import {setRequestLocale} from 'next-intl/server';
-import LocaleSwitcher from "./LocaleSwitcher";
-
-
-
-
-
-
-
-
-export default function Navbar() {
-
-  
-  
-    
-
-
-    
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-white text-slate-800 bg-opacity-60 p-4 shadow-md sticky">
+    <nav className="bg-gray-900 text-white p-4 shadow-md" aria-label="Main Navigation">
       <div className="container mx-auto flex justify-between items-center">
-        <NavigationLink href="/">
-        <Image src="/logo.svg" alt="logo" width={100} height={100}   />
-        </NavigationLink>
+        {/* Logo */}
+        <Link href="/" className="text-xl font-bold cursor-pointer" aria-label="Homepage">
+          MyApp
+        </Link>
         
-        <ul className="flex space-x-4">
-          <li>
-            <NavigationLink href="/web" className="hover:text-gray-400">Web</NavigationLink>
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden focus:outline-none" 
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+        >
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+        
+        {/* Menu */}
+        <ul 
+          className={`absolute md:static top-16 left-0 w-full md:w-auto bg-gray-900 md:bg-transparent md:flex space-x-4 p-4 md:p-0 transition-all ${isOpen ? "block" : "hidden"}`} 
+          role="menu"
+        >
+          <li role="menuitem">
+            <Link href="/about" className="block py-2 md:py-0 px-4 md:px-0 hover:text-gray-400">About</Link>
           </li>
-          
-          <li>
-            <NavigationLink href="/marketing" className="hover:text-gray-400">Services</NavigationLink>
+          <li role="menuitem">
+            <Link href="/services" className="block py-2 md:py-0 px-4 md:px-0 hover:text-gray-400">Services</Link>
           </li>
-          <li>
-            <NavigationLink href="/contenido" className="hover:text-gray-400">Content</NavigationLink>
+          <li role="menuitem">
+            <Link href="/contact" className="block py-2 md:py-0 px-4 md:px-0 hover:text-gray-400">Contact</Link>
           </li>
-          
-
-          <li>
-            <NavigationLink href="/about" className="hover:text-gray-400">About</NavigationLink>
-            
-          </li>
-          <li>
-            <NavigationLink href="/contact" className="hover:text-gray-400">contact</NavigationLink>
-          </li>
-          
         </ul>
-        <LocaleSwitcher/>
       </div>
     </nav>
-    
-  )
-}
+  );
+};
 
+export default Navbar;
