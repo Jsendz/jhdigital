@@ -6,18 +6,15 @@ import Us from '@/app/components/Us';
 import { useTranslations } from 'next-intl';
 import {setRequestLocale} from 'next-intl/server';
  
-type Props = {
-    params: {locale: string};
-  };
+
   
   
   
-  export default function PathnamesPage({params: {locale}}: Props) {
+  export default function Page() {
  
   // Once the request locale is set, you
   // can call hooks from `next-intl`
-  setRequestLocale(locale);
-  const t = useTranslations('IndexPage');
+
  
   return (
     <div>
