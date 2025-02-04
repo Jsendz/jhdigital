@@ -7,17 +7,14 @@ import {setRequestLocale} from 'next-intl/server';
 import { useTranslations } from "next-intl";
 
 
-type Props = {
-  params: {locale:string}
-}
 
  
-export default function IndexPage({params: {locale}}: Props) {
+export default function IndexPage() {
   // Enable static rendering
-  setRequestLocale(locale);
+ 
 
 
-  const t = useTranslations('Index');
+
 
   return (
     <div className="w-full h-full bg-white bg-opacity-50  ">
