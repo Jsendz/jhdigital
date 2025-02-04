@@ -4,22 +4,32 @@ import ServicesPage from "../components/features/Service";
 import Header from "../components/Header";
 import Testimonial from "../components/testimonials/Testimonials";
 import { getTranslations } from "next-intl/server";
-import { Metadata } from "next";
+import { Metadata, ResolvingMetadata } from "next";
 
 
 
 
 
  
+// Define Props type for correct usage with Next.js
 type Props = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = params;
-  const t = await getTranslations({ locale, namespace: 'Index' });
+// Dynamic SEO Metadata
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  // Read route params
+  const locale = (await params).locale;
 
- 
+  // Fetch translations
+  const t = await getTranslations({ locale, namespace: "Index" });
+
+  // Access and extend parent metadata
+  const previousImages = (await parent).openGraph?.images || [];
 
   return {
     title: t("title"), // Localized Page Title
