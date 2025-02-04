@@ -11,10 +11,6 @@ import LocaleSwitcher from "./LocaleSwitcher";
 
 
 
-type Props = {
-  params: {locale: string};
-};
-
 
 
 
