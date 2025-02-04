@@ -47,8 +47,8 @@ const Navbar = () => {
             <NavigationLink href="/contact" className="block py-2 md:py-0 px-4 md:px-0 hover:text-gray-400">Contact</NavigationLink>
           </li>
         </ul>
-      </div>
       <LocaleSwitcher />
+      </div>
     </nav>
   );
 };
