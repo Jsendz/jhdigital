@@ -1,0 +1,15 @@
+{
+  "Index": {
+    "title": "JH-Digital Services",
+    "description": "Go to the about page"
+  },
+
+  "LocaleSwitcher": {
+        "label": "Change language",
+        "locale": "{locale, select, es {ES} en {EN} fr {FR} ca {CAT} other {Unknown}}"
+      },
+      "IndexPage": {
+      "title": "Hello world!",
+      "description": "Go to the about page"
+    }
+}

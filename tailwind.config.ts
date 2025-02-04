@@ -12,6 +12,14 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      backgroundImage: {
+        'fondo': "url('/fondo2.webp')",
+        'fondo2': "url('/fondo.jpg')",
+        
+        
+        
+        
+      },
     },
   },
   plugins: [],
