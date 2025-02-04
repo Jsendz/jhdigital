@@ -3,27 +3,18 @@ import ServicesPage from "../components/features/Service";
 import Header from "../components/Header";
 import Testimonial from "../components/testimonials/Testimonials";
 import { getTranslations } from "next-intl/server";
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 
-// Define Props type for correct usage with Next.js
-type Props = {
+// Define Props type for Next.js 14
+interface Props {
   params: { locale: string };
   searchParams?: { [key: string]: string | string[] | undefined };
-};
+}
 
 // Dynamic SEO Metadata
-export async function generateMetadata(
-  { params, searchParams }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
-  // Read route params
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = params;
-
-  // Fetch translations
   const t = await getTranslations({ locale, namespace: "Index" });
-
-  // Access and extend parent metadata
-  const previousImages = (await parent).openGraph?.images || [];
 
   return {
     title: t("title"),
@@ -37,8 +28,12 @@ export async function generateMetadata(
       url: `https://jhdigitalservices.com/${locale}`,
       siteName: "My Website",
       images: [
-        `https://jhdigitalservices.com/assets/${locale}/og-image.jpg`,
-        ...previousImages,
+        {
+          url: `https://jhdigitalservices.com/assets/${locale}/og-image.jpg`,
+          width: 1200,
+          height: 630,
+          alt: t("ogImageAlt"),
+        },
       ],
       type: "website",
     },
@@ -51,7 +46,7 @@ export async function generateMetadata(
   };
 }
 
-export default function Page({ params, searchParams }: Props) {
+export default function Page({ params }: Props) {
   return (
     <main className="w-full h-full bg-white bg-opacity-50">
       <Hero />
