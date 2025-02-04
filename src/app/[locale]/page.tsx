@@ -10,21 +10,16 @@ import { Metadata } from "next";
 
 
 
+ 
 type Props = {
   params: { locale: string };
 };
 
-// Dynamic SEO Metadata
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  if (!params?.locale) {
-    return {
-      title: "Default Title",
-      description: "Default description",
-    };
-  }
+  const { locale } = params;
+  const t = await getTranslations({ locale, namespace: 'Index' });
 
-  const locale: string = params.locale; // ✅ Ensure locale is a string
-  const t = await getTranslations({ locale, namespace: "Index" });
+ 
 
   return {
     title: t("title"), // Localized Page Title
