@@ -11,7 +11,8 @@ import {setRequestLocale} from 'next-intl/server';
 import { Metadata } from 'next';
 
 // SEO Metadata
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const t = useTranslations();
 
   return {
@@ -51,14 +52,13 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 
  
   return (
-    <div>
-        <HeroWeb />
-        <CTAWeb />
-        <Process />
-        <Us/>
-        <Projects />
-
-    </div>
     // ...
+    (<div>
+      <HeroWeb />
+      <CTAWeb />
+      <Process />
+      <Us/>
+      <Projects />
+    </div>)
   );
 }

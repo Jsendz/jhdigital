@@ -16,9 +16,13 @@ type Props = {
 
  
 // Define Props type for correct usage with Next.js
-export async function generateMetadata({
-  params: {locale}
-}: Omit<Props, 'children'>) {
+export async function generateMetadata(props: Omit<Props, 'children'>) {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   const t = await getTranslations({locale, namespace: 'Index'});
 
   return {

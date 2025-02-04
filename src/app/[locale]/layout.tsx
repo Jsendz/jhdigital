@@ -11,14 +11,20 @@ import Footer from '../components/Footer';
 
 type Props = {
   children: ReactNode;
-  params: {locale: string};
+  params: Promise<{locale: string}>;
 }
 
 
 
-export async function generateMetadata({params: {locale}} : Props) {
+export async function generateMetadata(props: Props) {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   const t = await getTranslations({locale, namespace: 'Index'});
- 
+
   return {
     title: t('title')
   };
@@ -27,18 +33,28 @@ export async function generateMetadata({params: {locale}} : Props) {
 
 
  
-export default async function LocaleLayout({children, params: {locale}}: Props) {
+export default async function LocaleLayout(props: Props) {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
+  const {
+    children
+  } = props;
+
   // Ensure that the incoming `locale` is valid
   if (!routing.locales.includes(locale as any)) {
     notFound();
   }
 
   setRequestLocale(locale);
- 
+
   // Providing all messages to the client
   // side is the easiest way to get started
   const messages = await getMessages();
- 
+
   return (
     <html lang={locale}>
       <body className="bg-fondo bg-cover bg-no-repeat">
