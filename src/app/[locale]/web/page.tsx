@@ -8,42 +8,7 @@ import {setRequestLocale} from 'next-intl/server';
  
 
   
-import { Metadata } from 'next';
 
-// SEO Metadata
-export async function generateMetadata(props: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  const params = await props.params;
-  const t = useTranslations();
-
-  return {
-    title: t('pageTitle'),
-    description: t('pageDescription'),
-    alternates: {
-      canonical: `https://jhdigitalservices.com/${params.locale}`,
-    },
-    openGraph: {
-      title: t('pageTitle'),
-      description: t('pageDescription'),
-      url: `https://jhdigitalservices.com/${params.locale}`,
-      siteName: "Your Website",
-      images: [
-        {
-          url: `https://jhdigitalservices.com/assets/${params.locale}/og-image.jpg`,
-          width: 1200,
-          height: 630,
-          alt: t('ogImageAlt'),
-        },
-      ],
-      type: "website",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: t('pageTitle'),
-      description: t('pageDescription'),
-      images: [`https://jhdigitalservices.com/assets/${params.locale}/twitter-image.jpg`],
-    },
-  };
-}
   
   export default function Page() {
  

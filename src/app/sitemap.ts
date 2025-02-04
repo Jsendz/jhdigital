@@ -3,32 +3,36 @@ import type { MetadataRoute } from 'next'
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://acme.com',
+      url: 'https://jhdigitalservices.com',
       lastModified: new Date(),
       alternates: {
         languages: {
-          es: 'https://acme.com/es',
-          de: 'https://acme.com/de',
+          es: 'https://jhdigitalservices.com/es',
+          en: 'https://jhdigitalservices.com/en',
+          fr: 'https://jhdigitalservices.com/fr',
+          ca: 'https://jhdigitalservices.com/cat',
         },
       },
     },
     {
-      url: 'https://acme.com/about',
+      url: 'https://jhdigitalservices.com/about',
       lastModified: new Date(),
       alternates: {
         languages: {
-          es: 'https://acme.com/es/about',
-          de: 'https://acme.com/de/about',
+          es: 'https://jhdigitalservices.com/es/about',
+          en: 'https://jhdigitalservices.com/en',
+          fr: 'https://jhdigitalservices.com/fr',
+          ca: 'https://jhdigitalservices.com/cat',
         },
       },
     },
     {
-      url: 'https://acme.com/blog',
+      url: 'https://jhdigitalservices.com/blog',
       lastModified: new Date(),
       alternates: {
         languages: {
-          es: 'https://acme.com/es/blog',
-          de: 'https://acme.com/de/blog',
+          es: 'https://jhdigitalservices.com/es/blog',
+          de: 'https://jhdigitalservices.com/de/blog',
         },
       },
     },
