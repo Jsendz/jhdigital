@@ -10,6 +10,15 @@
 
   "LocaleSwitcher": {
         "label": "Change language",
-        "locale": "{locale, select, es {ES} en {EN} fr {FR} ca {CAT} other {Unknown}}"
-      }
+        "locale": "{locale, select, es {ES} en {EN} fr {FR} cat {CA} other {Unknown}}"
+      },
+
+      "nav": {
+        "services": "Servicios",
+      "web" : "Servicios Web",
+      "seo" : "Seo",
+      "contenido" :"Creación de contenido",
+      "about" : "Quienes somos?",
+      "contacto" : "Contacto"
+    }
 }

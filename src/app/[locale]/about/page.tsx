@@ -1,5 +1,6 @@
 
 import About from '@/app/components/About';
+import Mission from '@/app/components/Mission';
 import { useTranslations } from 'next-intl';
 import {setRequestLocale} from 'next-intl/server';
  
@@ -16,6 +17,7 @@ import {setRequestLocale} from 'next-intl/server';
   return (
     <div>
 <About />
+<Mission />
     </div>
     // ...
   );

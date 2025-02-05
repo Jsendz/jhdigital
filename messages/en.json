@@ -6,10 +6,19 @@
 
   "LocaleSwitcher": {
         "label": "Change language",
-        "locale": "{locale, select, es {ES} en {EN} fr {FR} ca {CAT} other {Unknown}}"
+        "locale": "{locale, select, es {ES} en {EN} fr {FR} cat {CA} other {Unknown}}"
       },
       "IndexPage": {
       "title": "Hello world!",
       "description": "Go to the about page"
+    },
+
+    "nav": {
+      "services":"Services",
+      "web" : "Web Services",
+      "seo" : "Seo",
+      "contenido" :"Content Creation",
+      "about" : "About us",
+      "contacto" : "Contact"
     }
 }

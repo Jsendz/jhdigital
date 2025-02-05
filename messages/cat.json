@@ -9,6 +9,15 @@
     },
     "LocaleSwitcher": {
         "label": "Change language",
-        "locale": "{locale, select, es {ES} en {EN} fr {FR} ca {CAT} other {Unknown}}"
-      }
+        "locale": "{locale, select, es {ES} en {EN} fr {FR} cat {CA} other {Unknown}}"
+      },
+
+      "nav": {
+        "services": "Serveis",
+      "web" : "Serveis Web",
+      "seo" : "Seo",
+      "contenido" :"Creació de contingut",
+      "about" : "Qui som?",
+      "contacto" : "Contacte"
+    }
   }
